@@ -94,8 +94,8 @@ mysql_url="https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.33-linux-glibc2.
 mysql_base_dir="/usr/local/mysql"
 mysql_data_dir="/data/mysql"
 
-mysql_root_pwd="aminglinux.Com"
-mysql_rep_pwd="Aminglinux123"
+mysql_root_pwd="a3Bc2dF20240607"
+#mysql_rep_pwd="a3Bc2dF20240607"
 
 ##########################
 
@@ -168,6 +168,7 @@ install_mysql()
 user = mysql
 port = 3306
 server_id = 1
+lower_case_table_names=1
 basedir = ${mysql_base_dir}
 datadir = ${mysql_data_dir}
 socket = /tmp/mysql.sock
