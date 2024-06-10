@@ -83,7 +83,7 @@ COMMENT
 
 ### ------- 分割线,以下为脚本正文 -------
 #!/bin/bash
-# author: aming  (微信: lishiming2009)
+# author: 杨庆
 # version: v1
 # date: 2023-10-19
 
@@ -93,9 +93,9 @@ mysql_url="https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.33-linux-glibc2.
 
 mysql_base_dir="/usr/local/mysql"
 mysql_data_dir="/data/mysql"
-
 mysql_root_pwd="a3Bc2dF20240607"
-#mysql_rep_pwd="a3Bc2dF20240607"
+# 是否忽略大小写
+mysql_lower_case_table_names=1
 
 ##########################
 
@@ -168,7 +168,7 @@ install_mysql()
 user = mysql
 port = 3306
 server_id = 1
-lower_case_table_names=1
+lower_case_table_names=${mysql_lower_case_table_names}
 basedir = ${mysql_base_dir}
 datadir = ${mysql_data_dir}
 socket = /tmp/mysql.sock
@@ -181,7 +181,7 @@ EOF
         sudo  yum install -y  ncurses-compat-libs  libaio-devel
 
         echo "初始化"
-        sudo ${mysql_base_dir}/bin/mysqld --console  --datadir=${mysql_data_dir} --initialize-insecure --user=mysql
+        sudo ${mysql_base_dir}/bin/mysqld --console  --datadir=${mysql_data_dir} --initialize-insecure --user=mysql --lower_case_table_names=${mysql_lower_case_table_names}
         ck_ok "初始化"
 
         if [ -f /usr/lib/systemd/system/mysqld.service ]
